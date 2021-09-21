@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "sources": [
+    "webpack:///./src/d.js"
+  ],
+  "names": [
+    "d",
+    "console",
+    "log"
+  ],
+  "mappings": ";;;;;;;;;;AAAA;AAAA;AACe,yEAAAA,CAAC;AAAA,SAAIC,OAAO,CAACC,GAAR,CAAYF,CAAZ,CAAJ;AAAA,CAAhB,E",
+  "file": "0.17c73181.bundle.js",
+  "sourcesContent": [
+    "//异步模块，需要异步加载\nexport default d => console.log(d)"
+  ],
+  "sourceRoot": ""
+}

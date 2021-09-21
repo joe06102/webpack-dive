@@ -1,9 +1,11 @@
 const path = require('path')
 const cleanBuildPlugin = require('clean-webpack-plugin')
-const CommonChunkPlugin = require('webpack').optimize.CommonsChunkPlugin;
+const Webpack = require('webpack')
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
+    devtool: false,
     entry: {
         app: './src/main.js'
     },
@@ -28,19 +30,11 @@ module.exports = {
         ]
     },
     plugins: [
-        new cleanBuildPlugin(path.resolve(__dirname, './build/')),
-        new CommonChunkPlugin({ 
-            filename: 'common.[hash:8].js', 
-            name: 'common',
-            minChunks: function(module, count) {
-                console.log(module.resource, count);
-                if(module.resource && module.resource.indexOf('a.js') > -1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
+        new Webpack.SourceMapDevToolPlugin({
+            exclude: ['vendor.js'],
+            filename: '[name].map'
         }),
+        new cleanBuildPlugin(path.resolve(__dirname, './build/')),
         new HTMLWebpackPlugin({
             title: 'webpack deep dive',
             filename: 'index.html'
